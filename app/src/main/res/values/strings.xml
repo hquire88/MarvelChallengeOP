@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MarvelChallenge</string>
+
+    //Main
+    <string name="character_title">Personajes</string>
+    <string name="comics_title">Comics</string>
+
+    <string name="no_desc_text">SIN DESCRIPCIÓN</string>
+</resources>
