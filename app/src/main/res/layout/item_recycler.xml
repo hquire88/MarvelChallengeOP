@@ -20,19 +20,19 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="200dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <FrameLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/thumb_character"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
+                        android:id="@+id/item_thumb"
+                        android:layout_width="250dp"
+                        android:layout_height="250dp"
                         android:layout_gravity="center"
                         android:adjustViewBounds="true"
                         android:scaleType="fitCenter"
@@ -58,7 +58,7 @@
                         app:srcCompat="@drawable/marvel_logo2" />
 
                     <TextView
-                        android:id="@+id/name_character"
+                        android:id="@+id/item_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|end"

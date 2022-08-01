@@ -1,15 +1,16 @@
 package com.example.marvelchallenge.data
 
+import com.example.marvelchallenge.data.model.CharacterModel
 import com.example.marvelchallenge.data.model.CharactersProvider
 import com.example.marvelchallenge.data.model.ResultModel
-import com.example.marvelchallenge.data.network.CharacterService
+import com.example.marvelchallenge.data.network.MarvelService
 import javax.inject.Inject
 
-class CharactersRepository @Inject constructor(private val api : CharacterService,
+class CharactersRepository @Inject constructor(private val api : MarvelService,
                                                private val charactersProvider : CharactersProvider){
 
-    suspend fun getAllCharacters(): ResultModel?{
-        val response = api.getCharacters()
+    suspend fun getAllCharacters(): ResultModel<CharacterModel>?{
+        val response = api.getAllCharacters()
         charactersProvider.characters = response?.data?.results
         return response
     }
