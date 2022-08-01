@@ -1,7 +1,9 @@
 package com.example.marvelchallenge.ui.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.example.marvelchallenge.R
+import com.example.marvelchallenge.core.utils.OnItemClickListener
 import com.example.marvelchallenge.databinding.ActivityMainBinding
 import com.example.marvelchallenge.ui.view.adapters.CharactersRecyclerViewAdapter
 import com.example.marvelchallenge.ui.view.adapters.ComicsRecyclerViewAdapter
@@ -53,18 +56,29 @@ class MainActivity : AppCompatActivity() {
             // set recyclerView con los datos obtenidos
             charRVAdapter = CharactersRecyclerViewAdapter(it.data.results)
             characterRView.adapter = charRVAdapter
+            charRVAdapter.setOnItemClickListener(object : OnItemClickListener {
+                override fun onItemClick(position: Int) {
+                    val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                    intent.putExtra("position", position)
+
+                    startActivity(intent)
+                }
+            })
         })
 
         mainViewModel.resultComicModel.observe(this, Observer {
             // set recyclerView con los datos obtenidos
             comicRVAdapter = ComicsRecyclerViewAdapter(it.data.results)
             comicsRView.adapter = comicRVAdapter
+            comicRVAdapter.setOnItemClickListener(object : OnItemClickListener {
+                override fun onItemClick(position: Int) {
+                    Toast.makeText(this@MainActivity, "Posicion Comic: ${position+1}", Toast.LENGTH_SHORT).show()
+                }
+            })
         })
 
         mainViewModel.isLoading.observe(this, Observer {
             activityMainBinding.progressBar.isVisible = it
         })
-
-        mainViewModel.getCharacters()
     }
 }

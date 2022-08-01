@@ -6,4 +6,5 @@
     <string name="comics_title">Comics</string>
 
     <string name="no_desc_text">SIN DESCRIPCIÓN</string>
+    <string name="description">Descripción</string>
 </resources>

@@ -12,4 +12,6 @@
     <color name="dark_red">#8B0000</color>
     <color name="maroon">#590000</color>
 
+    <color name="background">#C0C0C0</color>
+
 </resources>

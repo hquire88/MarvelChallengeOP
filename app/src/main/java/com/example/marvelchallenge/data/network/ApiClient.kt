@@ -9,10 +9,11 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiClient {
-
     // Characters Services
     @GET("characters")
-    suspend fun getAllCharacters(@Query("ts") ts: String,
+    suspend fun getAllCharacters(@Query("limit") limit: Int,
+                                 @Query("offset") offset: Int,
+                                 @Query("ts") ts: String,
                                  @Query("apikey") apikey: String,
                                  @Query("hash") hash: String): Response<ResultModel<CharacterModel>>
 

@@ -11,14 +11,14 @@ class MarvelService @Inject constructor(private val apiClient: ApiClient) {
 
     suspend fun getAllCharacters(): ResultModel<CharacterModel>? {
         return withContext(Dispatchers.IO){
-            val response = apiClient.getAllCharacters("1", "ecdd665573e06b806a80273bf7d7a0d8", "18df2f6ea4b11c4f6c9b485ee1d129a4")
+            val response = apiClient.getAllCharacters(20,0,"1", "ecdd665573e06b806a80273bf7d7a0d8", "18df2f6ea4b11c4f6c9b485ee1d129a4")
             response.body()
         }
     }
 
-    suspend fun getCharacter(): ResultModel<CharacterModel>? {
+    suspend fun getCharacter(idCharacter: String): ResultModel<CharacterModel>? {
         return withContext(Dispatchers.IO){
-            val response = apiClient.getAllCharacters("1", "ecdd665573e06b806a80273bf7d7a0d8", "18df2f6ea4b11c4f6c9b485ee1d129a4")
+            val response = apiClient.getCharacter("1", "ecdd665573e06b806a80273bf7d7a0d8", "18df2f6ea4b11c4f6c9b485ee1d129a4", idCharacter)
             response.body()
         }
     }

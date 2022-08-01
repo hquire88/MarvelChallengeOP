@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelchallenge.R
+import com.example.marvelchallenge.core.utils.OnItemClickListener
 import com.example.marvelchallenge.data.model.CharacterModel
 import com.example.marvelchallenge.data.model.ThumbnailModel
 import com.squareup.picasso.Picasso
@@ -12,9 +13,16 @@ import com.squareup.picasso.Picasso
 class CharactersRecyclerViewAdapter(private var charactersList: ArrayList<CharacterModel>?):
         RecyclerView.Adapter<GenericRecyclerViewHolder>() {
 
+    private lateinit var mListener: OnItemClickListener
+
+    fun setOnItemClickListener(listener: OnItemClickListener){
+        mListener = listener
+    }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenericRecyclerViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_recycler, parent, false)
-        return GenericRecyclerViewHolder(view)
+        return GenericRecyclerViewHolder(view, mListener)
     }
 
     override fun getItemCount(): Int {
@@ -29,10 +37,5 @@ class CharactersRecyclerViewAdapter(private var charactersList: ArrayList<Charac
         holder.itemName?.text = charactersList?.get(position)?.name
         Picasso.get().load(charactersList?.get(position)?.thumbnail?.getImgUrlBySize(ThumbnailModel.SIZE_LARGE))
             .into(holder.itemImage)
-    }
-
-    fun setItems(newItems: ArrayList<CharacterModel>) {
-        charactersList?.addAll(newItems)
-        notifyDataSetChanged()
     }
 }
