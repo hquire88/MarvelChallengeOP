@@ -15,7 +15,6 @@ import com.example.marvelchallenge.data.model.ComicModel
 import com.example.marvelchallenge.data.model.ThumbnailModel
 import com.example.marvelchallenge.databinding.ActivityDetailBinding
 import com.example.marvelchallenge.ui.view.adapters.ComicsRecyclerViewAdapter
-import com.example.marvelchallenge.ui.view.adapters.SubItemsRecyclerViewAdapter
 import com.example.marvelchallenge.ui.viewmodel.DetailViewModel
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
