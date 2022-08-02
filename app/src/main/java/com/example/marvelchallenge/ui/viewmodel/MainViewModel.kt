@@ -8,7 +8,6 @@ import com.example.marvelchallenge.data.model.ComicModel
 import com.example.marvelchallenge.data.model.ResultModel
 import com.example.marvelchallenge.domain.GetCharactersUseCase
 import com.example.marvelchallenge.domain.GetComicsUseCase
-import com.example.marvelchallenge.domain.GetSelectedCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

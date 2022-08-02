@@ -16,9 +16,9 @@ class MarvelService @Inject constructor(private val apiClient: ApiClient) {
         }
     }
 
-    suspend fun getCharacter(idCharacter: String): ResultModel<CharacterModel>? {
+    suspend fun getCharacter(idCharacter: Int): ResultModel<CharacterModel>? {
         return withContext(Dispatchers.IO){
-            val response = apiClient.getCharacter("1", "ecdd665573e06b806a80273bf7d7a0d8", "18df2f6ea4b11c4f6c9b485ee1d129a4", idCharacter)
+            val response = apiClient.getCharacter(idCharacter,"1", "ecdd665573e06b806a80273bf7d7a0d8", "18df2f6ea4b11c4f6c9b485ee1d129a4")
             response.body()
         }
     }
@@ -26,6 +26,13 @@ class MarvelService @Inject constructor(private val apiClient: ApiClient) {
     suspend fun getAllComics(): ResultModel<ComicModel>? {
         return withContext(Dispatchers.IO){
             val response = apiClient.getAllComics("1", "ecdd665573e06b806a80273bf7d7a0d8", "18df2f6ea4b11c4f6c9b485ee1d129a4")
+            response.body()
+        }
+    }
+
+    suspend fun getComicsByCharacter(idCharacter: Int): ResultModel<ComicModel>? {
+        return withContext(Dispatchers.IO){
+            val response = apiClient.getComicsByCharacter(idCharacter,"1", "ecdd665573e06b806a80273bf7d7a0d8", "18df2f6ea4b11c4f6c9b485ee1d129a4")
             response.body()
         }
     }

@@ -18,20 +18,26 @@ interface ApiClient {
                                  @Query("hash") hash: String): Response<ResultModel<CharacterModel>>
 
     @GET("characters/{idCharacter}")
-    suspend fun getCharacter(@Query("ts") ts: String,
+    suspend fun getCharacter(@Path("idCharacter") idCharacter: Int,
+                             @Query("ts") ts: String,
                              @Query("apikey") apikey: String,
-                             @Query("hash") hash: String,
-                             @Path("idCharacter") idCharacter: String): Response<ResultModel<CharacterModel>>
+                             @Query("hash") hash: String): Response<ResultModel<CharacterModel>>
 
     // Comics Services
     @GET("comics")
     suspend fun getAllComics(@Query("ts") ts: String,
-                                 @Query("apikey") apikey: String,
-                                 @Query("hash") hash: String): Response<ResultModel<ComicModel>>
+                             @Query("apikey") apikey: String,
+                             @Query("hash") hash: String): Response<ResultModel<ComicModel>>
 
     @GET("comics/{idComic}")
     suspend fun getComic(@Query("ts") ts: String,
-                             @Query("apikey") apikey: String,
-                             @Query("hash") hash: String,
-                             @Path("idComic") idComic: String): Response<ResultModel<ComicModel>>
+                         @Query("apikey") apikey: String,
+                         @Query("hash") hash: String,
+                         @Path("idComic") idComic: String): Response<ResultModel<ComicModel>>
+
+    @GET("characters/{idCharacter}/comics")
+    suspend fun getComicsByCharacter(@Path("idCharacter") idCharacter: Int,
+                                     @Query("ts") ts: String,
+                                     @Query("apikey") apikey: String,
+                                     @Query("hash") hash: String): Response<ResultModel<ComicModel>>
 }

@@ -15,7 +15,9 @@ class CharactersRepository @Inject constructor(private val api : MarvelService,
         return response
     }
 
-    suspend fun getSelectedCharacter(): ArrayList<CharacterModel>?{
-        return charactersProvider.characters
+    suspend fun getSelectedCharacter(idCharacter: Int): CharacterModel?{
+        val response = api.getCharacter(idCharacter)
+        charactersProvider.selectedCharacter = response?.data?.results!![0]
+        return charactersProvider.selectedCharacter
     }
 }

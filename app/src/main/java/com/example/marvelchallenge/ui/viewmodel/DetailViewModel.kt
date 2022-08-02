@@ -4,26 +4,40 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.marvelchallenge.data.model.CharacterModel
-import com.example.marvelchallenge.domain.GetSelectedCharactersUseCase
+import com.example.marvelchallenge.data.model.ComicModel
+import com.example.marvelchallenge.domain.GetComicsByCharacterUseCase
+import com.example.marvelchallenge.domain.GetSelectedCharacterUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val getSelectedCharUseCase: GetSelectedCharactersUseCase,
+    private val getComicsByCharacterUseCase: GetComicsByCharacterUseCase,
+    private val getSelectedCharacterUseCase: GetSelectedCharacterUseCase
 ): ViewModel() {
 
-    val resultSelCharModel = MutableLiveData<ArrayList<CharacterModel>>()
+    val resultComicsByCharacterModel = MutableLiveData<ArrayList<ComicModel>>()
+    val resultSelectedCharModel = MutableLiveData<CharacterModel?>()
     val isLoading = MutableLiveData<Boolean>()
 
-    fun onCreate() {
+    fun onCreate(idCharacter: Int) {
         viewModelScope.launch {
             isLoading.postValue(true)
-            val result = getSelectedCharUseCase()
+            val result = getSelectedCharacterUseCase.invoke(idCharacter)
 
             if (result != null){
-                resultSelCharModel.postValue(result)
+                resultSelectedCharModel.postValue(result)
+                isLoading.postValue(false)
+            }
+        }
+
+        viewModelScope.launch {
+            isLoading.postValue(true)
+            val result = getComicsByCharacterUseCase.invoke(idCharacter)
+
+            if (result != null){
+                resultComicsByCharacterModel.postValue(result.data.results)
                 isLoading.postValue(false)
             }
         }

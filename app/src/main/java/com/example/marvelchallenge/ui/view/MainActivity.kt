@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onItemClick(position: Int) {
                     val intent = Intent(this@MainActivity, DetailActivity::class.java)
                     intent.putExtra("position", position)
+                    intent.putExtra("idCharacter", it.data.results[position].id)
 
                     startActivity(intent)
                 }

@@ -15,4 +15,10 @@ class ComicsRepository @Inject constructor(private val api : MarvelService,
         comicsProvider.comics = response?.data?.results
         return response
     }
+
+    suspend fun getComicsByCharacter(idCharacter: Int): ResultModel<ComicModel>?{
+        val response = api.getComicsByCharacter(idCharacter)
+        comicsProvider.comics = response?.data?.results
+        return response
+    }
 }

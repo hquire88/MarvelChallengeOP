@@ -6,4 +6,5 @@ import javax.inject.Singleton
 @Singleton
 class CharactersProvider @Inject constructor() {
         var characters: ArrayList<CharacterModel>? = arrayListOf()
+        var selectedCharacter: CharacterModel? = null
 }

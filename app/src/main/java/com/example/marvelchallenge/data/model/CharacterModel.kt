@@ -5,9 +5,5 @@ data class CharacterModel(
     val name: String,
     val description: String,
     val thumbnail: ThumbnailModel,
-    val resourceURI: String,
-    val comics: ItemsModel,
-    val series: ItemsModel,
-    val stories: ItemsModel,
-    val events: ItemsModel
+    val resourceURI: String
 )
