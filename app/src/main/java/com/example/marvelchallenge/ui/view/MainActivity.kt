@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.resultCharacterModel.observe(this, Observer {
             // set recyclerView con los datos obtenidos
-            charRVAdapter = CharactersRecyclerViewAdapter(it.data.results)
+            charRVAdapter = CharactersRecyclerViewAdapter(it?.data!!.results)
             characterRView.adapter = charRVAdapter
             charRVAdapter.setOnItemClickListener(object : OnItemClickListener {
                 override fun onItemClick(position: Int) {
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.resultComicModel.observe(this, Observer {
             // set recyclerView con los datos obtenidos
-            comicRVAdapter = ComicsRecyclerViewAdapter(it.data.results)
+            comicRVAdapter = ComicsRecyclerViewAdapter(it?.data!!.results)
             comicsRView.adapter = comicRVAdapter
             comicRVAdapter.setOnItemClickListener(object : OnItemClickListener {
                 override fun onItemClick(position: Int) {

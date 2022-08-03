@@ -18,8 +18,8 @@ class MainViewModel @Inject constructor(
     private val getComicsUseCase: GetComicsUseCase
 ): ViewModel() {
 
-    val resultCharacterModel = MutableLiveData<ResultModel<CharacterModel>>()
-    val resultComicModel = MutableLiveData<ResultModel<ComicModel>>()
+    val resultCharacterModel = MutableLiveData<ResultModel<CharacterModel>?>()
+    val resultComicModel = MutableLiveData<ResultModel<ComicModel>?>()
     val isLoading = MutableLiveData<Boolean>()
 
     fun onCreate() {

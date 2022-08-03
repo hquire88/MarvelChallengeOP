@@ -1,5 +1,6 @@
 package com.example.marvelchallenge.di
 
+import com.example.marvelchallenge.data.Constants.BASE_URL
 import com.example.marvelchallenge.data.network.ApiClient
 import dagger.Module
 import dagger.Provides
@@ -17,7 +18,7 @@ object NetworkModule {
     @Provides
     fun provideRetrofit():Retrofit{
         return Retrofit.Builder()
-            .baseUrl("https://gateway.marvel.com/v1/public/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
